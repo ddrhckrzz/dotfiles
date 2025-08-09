@@ -157,6 +157,7 @@
     wget
     git	                    	# Version Control
     snapshot			            # Screenshot lol
+    direnv                    # Shell Extension that manages the environment
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS

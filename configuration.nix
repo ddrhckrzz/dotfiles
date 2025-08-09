@@ -37,16 +37,23 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  #services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "ph";
-    variant = "";
+  # services.xserver.xkb = {
+  #   layout = "ph";
+  #   variant = "";
+  # };
+
+  # Enable KDE Plasma 6.
+  services = {
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
   };
   
   # Enable OpenGL
@@ -146,10 +153,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    vscode.fhs 				# VSCode with extension support
+    vscode.fhs 				        # VSCode with extension support
     wget
-    git	                    		# Version Control
-    snapshot			        # Screenshot lol
+    git	                    	# Version Control
+    snapshot			            # Screenshot lol
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS
@@ -157,9 +164,18 @@
     pkgs.temurin-jre-bin-17		# Temurin JRE 17
     
     # Desktop Apps
-    pkgs.vesktop 			# Discord
-    pkgs.gparted			# Partition Manager
+    pkgs.vesktop 			        # Discord
+    pkgs.gparted			        # Partition Manager
     pkgs.prismlauncher		  	# Prism Launcher for Minecraft
+    hardinfo2                 # System information and benchmarks for Linux systems
+    haruna                    # Open source video player built with Qt/QML and libmpv
+    wayland-utils             # Wayland utilities
+    wl-clipboard              # Command-line copy/paste utilities for Wayland
+    kdePackages.kcalc         # Calculator
+    kdePackages.kolourpaint   # Easy-to-use paint program
+    kdePackages.ksystemlog    # KDE SystemLog Application
+    kdePackages.sddm-kcm      # Configuration module for SDDM
+    kdiff3                    # Compares and merges 2 or 3 files or directories
   ];
   
   # Enable and Configure Steam
@@ -191,7 +207,8 @@
   # Garbage collect stuff weekly while keeping at most 5 previous generations for each profile
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    randomizedDelaySec = "14m";
+    options = "--delete-older-than 10d";
   };
   
   # Enable Nix Flakes

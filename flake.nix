@@ -7,7 +7,7 @@
   };
 
   outputs = { self, nixpkgs }: {
-    nixosConfigurations.ddrhckrzz-asusl-nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.ddrhckrzz-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ ./configuration.nix ];
     };

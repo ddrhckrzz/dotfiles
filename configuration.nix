@@ -179,6 +179,7 @@
     kdePackages.ksystemlog    # KDE SystemLog Application
     kdePackages.sddm-kcm      # Configuration module for SDDM
     kdiff3                    # Compares and merges 2 or 3 files or directories
+    kalendar                  # Calendar application
   ];
   
   # Enable and Configure Steam

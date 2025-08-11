@@ -158,6 +158,8 @@
     git	                    	# Version Control
     snapshot			            # Screenshot lol
     direnv                    # Shell Extension that manages the environment
+    neofetch                  # Fetches system information and displays it in the terminal
+    htop                      # Interactive process viewer
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS

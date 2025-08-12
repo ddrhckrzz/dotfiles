@@ -183,7 +183,7 @@
     kdePackages.sddm-kcm      # Configuration module for SDDM
     kdiff3                    # Compares and merges 2 or 3 files or directories
     kdePackages.kdepim-addons # KDE PIM Addons
-    kdePackages.eventViews    # KDE PIM Event Views
+    kdePackages.eventviews    # KDE PIM Event Views
   ];
   
   # Enable and Configure Steam

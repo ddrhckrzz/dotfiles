@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -179,7 +179,7 @@
     kdePackages.ksystemlog    # KDE SystemLog Application
     kdePackages.sddm-kcm      # Configuration module for SDDM
     kdiff3                    # Compares and merges 2 or 3 files or directories
-    kalendar                  # Calendar application
+    inputs.kalendar.packages.x86_64-linux  # KDE Kalendar, a calendar application
   ];
   
   # Enable and Configure Steam

@@ -137,7 +137,7 @@
     description = "Andrei Ernest G. Martillo";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      thunderbird
     ];
   };
 
@@ -184,6 +184,7 @@
     kdiff3                    # Compares and merges 2 or 3 files or directories
     kdePackages.kdepim-addons # KDE PIM Addons
     kdePackages.eventviews    # KDE PIM Event Views
+    kdePackages.korganizer    # KDE Organizational Assistant
   ];
   
   # Enable and Configure Steam

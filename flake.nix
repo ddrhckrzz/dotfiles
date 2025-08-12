@@ -4,9 +4,6 @@
   inputs = {
     # System packages
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
-    # KDE Kalendar
-    kalendar.url = "github:KDE/kalendar?ref=master";
   };
 
   outputs = { self, nixpkgs, ... } @inputs: {

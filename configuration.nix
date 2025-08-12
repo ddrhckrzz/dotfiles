@@ -55,6 +55,9 @@
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
   };
+
+  # Enable KDE PIM (Plasma 6)
+  programs.kde-pim.enable = true;
   
   # Enable OpenGL
   hardware.graphics = {
@@ -179,7 +182,7 @@
     kdePackages.ksystemlog    # KDE SystemLog Application
     kdePackages.sddm-kcm      # Configuration module for SDDM
     kdiff3                    # Compares and merges 2 or 3 files or directories
-    inputs.kalendar.packages.x86_64-linux  # KDE Kalendar, a calendar application
+    kdePackages.kdepim-addons # KDE PIM Addons
   ];
   
   # Enable and Configure Steam

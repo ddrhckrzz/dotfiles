@@ -185,7 +185,7 @@
     kdePackages.kdepim-addons # KDE PIM Addons
     kdePackages.eventviews    # KDE PIM Event Views
     kdePackages.korganizer    # KDE Organizational Assistant
-    inputs.zen-browser."${system}".default # Zen Browser
+    inputs.zen-browser.packages."${system}".default # Zen Browser
   ];
   
   # Enable and Configure Steam

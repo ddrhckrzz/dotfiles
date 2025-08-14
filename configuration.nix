@@ -234,7 +234,11 @@
   services.openssh.enable = true;
 
   # Enable Tailscale servie.
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    # Set the Tailscale routing config here
+    useRoutingFeatures = "both";
+  };
 
   networking.firewall = {
     enable = true; # Enable the firewall

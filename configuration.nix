@@ -256,6 +256,28 @@
 
   };
 
+  services.evremap = {
+    enable = true; # Enable evremap service
+    settings = {
+      device_name = "AT Translated Set 2 keyboard"; # Specify the device name to remap
+      phys = "isa0060/serio0/input0"; # Physical device to listen to
+      # Remap Settings
+      remap = [
+        {
+          input = ["KEY_CAPSLOCK"];
+          output = ["KEY_ESC"]; # Remap Caps Lock to ESC
+        }
+        {
+          input = [
+            "KEY_LEFTSHIFT"
+            "KEY_RIGHTSHIFT"
+          ];
+          output = ["KEY_CAPSLOCK"]; # Remap LRShift to Caps Lock
+        }
+      ];
+    };
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

@@ -272,7 +272,7 @@
             "KEY_LEFTSHIFT"
             "KEY_RIGHTSHIFT"
           ];
-          output = ["KEY_CAPSLOCK"]; # Remap LRShift to Caps Lock
+          output = ["KEY_CAPSLOCK"]; # Remap L+RShift to Caps Lock
         }
       ];
     };

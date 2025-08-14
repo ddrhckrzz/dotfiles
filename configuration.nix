@@ -245,9 +245,6 @@
     allowedTCPPorts = [ 22 80 443 ]; # Open ports for SSH, HTTP, and HTTPS
     allowedUDPPorts = [ 53 ]; # Open port for DNS
 
-    # If you are using exit nodes or subnet routers in tailscale, enable this:
-    checkReversePath = true;
-
     # You can also specify allowed IPs or networks.
     # allowedIPs = [ " " ];
 

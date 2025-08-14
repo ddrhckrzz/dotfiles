@@ -185,6 +185,7 @@
     kdePackages.kdepim-addons # KDE PIM Addons
     kdePackages.eventviews    # KDE PIM Event Views
     kdePackages.korganizer    # KDE Organizational Assistant
+    inputs.zen-browser."${system}".default # Zen Browser
   ];
   
   # Enable and Configure Steam
@@ -231,6 +232,28 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Enable Tailscale servie.
+  services.tailscale.enable = true;
+
+  networking.firewall = {
+    enable = true; # Enable the firewall
+    allowedTCPPorts = [ 22 80 443 ]; # Open ports for SSH, HTTP, and HTTPS
+    allowedUDPPorts = [ 53 ]; # Open port for DNS
+
+    # If you are using exit nodes or subnet routers in tailscale, enable this:
+    checkReversePath = true;
+
+    # You can also specify allowed IPs or networks.
+    # allowedIPs = [ " " ];
+
+    # Setting up UDP Ranges
+    # allowedUDPPortsRanges = [
+    #   { from = 4000; to = 4007; }
+    #   { from = 8000; to = 8010; }
+    # ];
+
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

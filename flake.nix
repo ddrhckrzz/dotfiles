@@ -4,6 +4,9 @@
   inputs = {
     # System packages
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
+    # Zen Browser
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, ... } @inputs: {

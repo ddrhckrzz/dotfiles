@@ -157,12 +157,14 @@
   environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     vscode.fhs 				        # VSCode with extension support
-    wget
+    wget                      # The non-interactive network downloader
     git	                    	# Version Control
     snapshot			            # Screenshot lol
     direnv                    # Shell Extension that manages the environment
     neofetch                  # Fetches system information and displays it in the terminal
     htop                      # Interactive process viewer
+    zoxide                    # Smart directory navigation tool
+    ghostty                   # Alternative Terminal
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS
@@ -187,6 +189,7 @@
     kdePackages.eventviews    # KDE PIM Event Views
     kdePackages.korganizer    # KDE Organizational Assistant
     inputs.zen-browser.packages."${system}".default # Zen Browser
+    zeal-qt6                  # Offline documentation browser
   ];
   
   # Enable and Configure Steam

@@ -168,6 +168,7 @@
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS
     pkgs.temurin-jre-bin-8		# Temurin JRE 8
     pkgs.temurin-jre-bin-17		# Temurin JRE 17
+    nss_latest                # Latest NSS (Network Security Services) for Firefox
     
     # Desktop Apps
     pkgs.vesktop 			        # Discord

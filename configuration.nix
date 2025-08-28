@@ -128,9 +128,10 @@
     #media-session.enable = true;
   };
 
-  systemd.extraConfig = ''
-    DefaultTimeoutStartSec=30s
-  '';
+  systemd.settings.Manager = {
+    DefaultTimeoutStartSec = "30s";
+    DefaultTimeoutStopSec = "30s";
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

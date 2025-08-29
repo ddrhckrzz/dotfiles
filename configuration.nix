@@ -204,6 +204,7 @@
     kdePackages.korganizer    # KDE Organizational Assistant
     inputs.zen-browser.packages."${system}".default # Zen Browser
     zeal-qt6                  # Offline documentation browser
+    kdePackages.kio-gdrive    # Google Drive integration for KDE
   ];
   
   # Enable and Configure Steam

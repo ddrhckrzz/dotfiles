@@ -232,7 +232,7 @@
     size = 16 * 1024; # 16GB Swap
   }];
 
-  # Garbage collect stuff weekly while keeping at most 5 previous generations for each profile
+  # Garbage collect stuff older than 10 days
   nix.gc = {
     automatic = true;
     randomizedDelaySec = "14m";

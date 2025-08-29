@@ -128,9 +128,18 @@
     #media-session.enable = true;
   };
 
+  # Editing some systemd settings
+  systemd.tpm2.enable = false;
+  boot.initrd.systemd.tpm2.enable = false;
   systemd.settings.Manager = {
-    DefaultTimeoutStartSec = "30s";
-    DefaultTimeoutStopSec = "30s";
+    DefaultTimeoutStartSec = "20s";
+    DefaultTimeoutStopSec = "20s";
+    DefaultDeviceTimeoutSec = "20s";
+    TimeoutStartSec = "20s";
+    TimeoutStopSec = "20s";
+    RuntimeWatchdogSec = "10s";
+    RebootWatchdogSec = "20s";
+    KExecWatchdogSec = "10s";
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

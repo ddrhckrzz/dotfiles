@@ -166,6 +166,26 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Initialize R and RStudio with packages
+  myRPackages = with pkgs.rPackages; [
+    rmarkdown
+    knitr
+    rlang
+    dplyr
+    ggplot2
+    tidyr
+    readr
+    stringr
+    forcats
+    xts
+    shiny
+    learnr
+    rstudioapi
+    downloader
+  ];
+  RwithMyPackages = rWrapper.override{ packages = myRPackages; };
+  RStudioWithRPackages = rstudioWrapper.override{ packages = myRPackages; };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -185,6 +205,9 @@
     pkgs.temurin-jre-bin-8		# Temurin JRE 8
     pkgs.temurin-jre-bin-17		# Temurin JRE 17
     nss_latest                # Latest NSS (Network Security Services) for Firefox
+    RwithMyPackages           # R Language with packages
+    RStudioWithRPackages      # RStudio IDE with R and packages
+    pandoc                    # Universal document converter
     
     # Desktop Apps
     pkgs.vesktop 			        # Discord

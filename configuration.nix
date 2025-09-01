@@ -183,8 +183,8 @@
     rstudioapi
     downloader
   ];
-  RwithMyPackages = rWrapper.override{ packages = myRPackages; };
-  RStudioWithRPackages = rstudioWrapper.override{ packages = myRPackages; };
+  RwithMyPackages = pkgs.rWrapper.override{ packages = myRPackages; };
+  RStudioWithRPackages = pkgs.rstudioWrapper.override{ packages = myRPackages; };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

@@ -307,8 +307,8 @@
   };
 
   # Enable Virtualization with libvirtd and virt-manager
-  prorgrams.virt-manager.enable = true; # Enable virt-manager
-  usergroups.libvirtd.members = [ "ddrhckrzz" ];
+  programs.virt-manager.enable = true; # Enable virt-manager
+  users.groups.libvirtd.members = [ "ddrhckrzz" ];
   virtualisation.libvirtd.enable = true; # Enable libvirtd service
   virtualisation.spiceUSBRedirection.enable = true; # Enable SPICE USB Redirection
 

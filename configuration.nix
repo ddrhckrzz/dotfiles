@@ -306,6 +306,12 @@
 
   };
 
+  # Enable Virtualization with libvirtd and virt-manager
+  prorgrams.virt-manager.enable = true; # Enable virt-manager
+  usergroups.libvirtd.members = [ "ddrhckrzz" ];
+  virtualisation.libvirtd.enable = true; # Enable libvirtd service
+  virtualisation.spiceUSBRedirection.enable = true; # Enable SPICE USB Redirection
+
   services.evremap = {
     enable = true; # Enable evremap service
     settings = {

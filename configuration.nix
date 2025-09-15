@@ -218,6 +218,10 @@
     pkgs.mars-mips            # MARS IDE for MIPS assembly language
     nasm                      # Netwide Assembler for x86 architecture
 
+    # Wine stuff
+    wineWowPackages.waylandFull
+    winetricks
+
     # Hacking stuff
     inputs.ctf-tools.packages."${system}".default # CTF Tools
     exiftool

@@ -216,6 +216,15 @@
     })
     pandoc                    # Universal document converter
     pkgs.mars-mips            # MARS IDE for MIPS assembly language
+    nasm                      # Netwide Assembler for x86 architecture
+
+    # Hacking stuff
+    inputs.ctf-tools.packages."${system}".default # CTF Tools
+    exiftool
+    p7zip
+    binwalk
+    sleuthkit
+    steghide
     
     # Desktop Apps
     pkgs.vesktop 			        # Discord
@@ -236,6 +245,7 @@
     inputs.zen-browser.packages."${system}".default # Zen Browser
     zeal-qt6                  # Offline documentation browser
     kdePackages.kio-gdrive    # Google Drive integration for KDE
+    audacity                  # Audio Editor
   ];
   
   # Enable and Configure Steam

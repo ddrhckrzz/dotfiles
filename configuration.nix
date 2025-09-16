@@ -229,6 +229,11 @@
     binwalk
     sleuthkit
     steghide
+
+    # Office
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
     
     # Desktop Apps
     pkgs.vesktop 			        # Discord

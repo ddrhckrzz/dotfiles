@@ -156,9 +156,11 @@
   };
 
   fonts.packages = with pkgs; [
-    minecraftia
     monocraft
+    dejavu_fonts
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
+  fonts.fontDir.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -218,7 +220,6 @@
     pkgs.mars-mips            # MARS IDE for MIPS assembly language
     nasm                      # Netwide Assembler for x86 architecture
     fontconfig                # Font configuration and customization library
-    dejavu_fonts              # DejaVu fonts
 
     # Wine stuff
     wineWowPackages.waylandFull

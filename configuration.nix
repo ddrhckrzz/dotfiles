@@ -217,6 +217,8 @@
     pandoc                    # Universal document converter
     pkgs.mars-mips            # MARS IDE for MIPS assembly language
     nasm                      # Netwide Assembler for x86 architecture
+    fontconfig                # Font configuration and customization library
+    dejavu_fonts              # DejaVu fonts
 
     # Wine stuff
     wineWowPackages.waylandFull

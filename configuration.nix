@@ -180,12 +180,14 @@
     neofetch                  # Fetches system information and displays it in the terminal
     htop                      # Interactive process viewer
     zoxide                    # Smart directory navigation tool
-    ghostty                   # Alternative Terminal
+    alacritty                 # Alternative Terminal
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS
     pkgs.temurin-jre-bin-8		# Temurin JRE 8
     pkgs.temurin-jre-bin-17		# Temurin JRE 17
+    zulu25                    # Azul Zulu OpenJDK 25
+    maven                     # Apache Maven for Java projects
     nss_latest                # Latest NSS (Network Security Services) for Firefox
     (pkgs.rWrapper.override{ 
       packages = with pkgs.rPackages; [ # R with R packages
@@ -258,6 +260,7 @@
     zeal-qt6                  # Offline documentation browser
     kdePackages.kio-gdrive    # Google Drive integration for KDE
     audacity                  # Audio Editor
+    jetbrains.idea-community-bin # JetBrains IntelliJ IDEA Community Edition
   ];
   
   # Enable and Configure Steam

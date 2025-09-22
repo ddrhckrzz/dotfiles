@@ -257,7 +257,7 @@
     kdePackages.eventviews    # KDE PIM Event Views
     kdePackages.korganizer    # KDE Organizational Assistant
     inputs.zen-browser.packages."${system}".default # Zen Browser
-    zeal-qt6                  # Offline documentation browser
+    zeal                      # Offline documentation browser
     kdePackages.kio-gdrive    # Google Drive integration for KDE
     audacity                  # Audio Editor
     jetbrains.idea-community-bin # JetBrains IntelliJ IDEA Community Edition
@@ -288,6 +288,28 @@
     device = "/swapfile";
     size = 16 * 1024; # 16GB Swap
   }];
+
+  # Power management
+  powerManagement.enable = true;
+
+  # Enable Hibernation
+  boot.kernelParams = [ "resume_offset=27885568" "mem_sleep_default=deep" ];
+  boot.resumeDevice = "/dev/disk/by-uuid/38227467-d7d3-4799-b3c6-85acb06394ad";
+
+  services.power-profiles-daemon.enable = true;
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate"; # Suspend first then hibernate when lid is closed
+    HandlePowerKey = "hibernate"; # Hibernate when power button is pressed
+    HandlePowerKeyLongPress = "poweroff"; # Power off when power button is long-pressed
+    HandleLidSwitchDocked = "ignore"; # Do nothing when lid is closed and external monitor is connected
+  };
+
+  # Define time delay for hibernation
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30m
+    SuspendState=mem
+  '';
 
   # Garbage collect stuff older than 10 days
   nix.gc = {

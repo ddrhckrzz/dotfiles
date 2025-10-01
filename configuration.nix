@@ -181,6 +181,7 @@
     htop                      # Interactive process viewer
     zoxide                    # Smart directory navigation tool
     alacritty                 # Alternative Terminal
+    devenv                    # Development Environment for NixOS
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS

@@ -182,6 +182,8 @@
     zoxide                    # Smart directory navigation tool
     alacritty                 # Alternative Terminal
     devenv                    # Development Environment for NixOS
+    kdePackages.bluedevil     # KDE Bluetooth for Plasma 5
+    kdePackages.bluez-qt      # Qt wrapper for Bluez 5 DBus API
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS

@@ -304,6 +304,10 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
+  # Flatpak
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
   # Allow installing of App Images
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;

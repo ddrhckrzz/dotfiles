@@ -172,7 +172,7 @@
   users.users.ddrhckrzz = {
     isNormalUser = true;
     description = "Andrei Ernest G. Martillo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "kvd" "adbusers" ];
     packages = with pkgs; [
       thunderbird
     ];
@@ -248,6 +248,9 @@
     pkgs.mars-mips            # MARS IDE for MIPS assembly language
     nasm                      # Netwide Assembler for x86 architecture
     fontconfig                # Font configuration and customization library
+    android-studio            # Android Studio for Android Development
+    postman                   # Postman
+    jadx                      # Dex to Java decompiler
 
     # Wine stuff
     wineWowPackages.waylandFull
@@ -304,6 +307,9 @@
   # Allow installing of App Images
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
+
+  # Android Stuff
+  programs.adb.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

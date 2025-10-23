@@ -294,6 +294,7 @@
     kdePackages.kio-gdrive    # Google Drive integration for KDE
     audacity                  # Audio Editor
     jetbrains.idea-community-bin # JetBrains IntelliJ IDEA Community Edition
+    protonup-qt               # GUI Proton Updater
   ];
   
   # Enable and Configure Steam

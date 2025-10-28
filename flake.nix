@@ -13,11 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # CTF Tools
-    ctf-tools = {
-      url = "github:NixenBiksen/ctf-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # CTF Tools - curreently broken on my end
+    # ctf-tools = {
+    #   url = "github:NixenBiksen/ctf-nix";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = { self, nixpkgs, ... } @inputs: {

@@ -257,7 +257,7 @@
     winetricks
 
     # Hacking stuff
-    inputs.ctf-tools.packages."${system}".default # CTF Tools
+    # inputs.ctf-tools.packages."${system}".default # CTF Tools - disable for now since broken
     exiftool
     p7zip
     binwalk
@@ -290,7 +290,7 @@
     kdePackages.eventviews    # KDE PIM Event Views
     kdePackages.korganizer    # KDE Organizational Assistant
     inputs.zen-browser.packages."${system}".default # Zen Browser
-    zeal                      # Offline documentation browser
+    # zeal                      # Offline documentation browser - idk why it's broken but it is
     kdePackages.kio-gdrive    # Google Drive integration for KDE
     audacity                  # Audio Editor
     jetbrains.idea-community-bin # JetBrains IntelliJ IDEA Community Edition

@@ -251,6 +251,8 @@
     android-studio            # Android Studio for Android Development
     postman                   # Postman
     jadx                      # Dex to Java decompiler
+    unrar                     # RAR file extractor
+    texlive.combined.scheme-medium
 
     # Wine stuff
     wineWowPackages.waylandFull

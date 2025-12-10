@@ -36,19 +36,6 @@
    LC_ALL = "en_PH.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  #services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb = {
-  #   layout = "ph";
-  #   variant = "";
-  # };
-
   # Enable KDE Plasma 6.
   services = {
     desktopManager.plasma6.enable = true;
@@ -58,6 +45,57 @@
 
   # Enable KDE PIM (Plasma 6)
   programs.kde-pim.enable = true;
+
+  # MAKE KDE PLASMA FASTER!!!!!!!
+
+  nixpkgs.overlays = lib.singleton (final: prev: {
+    kdePackages = prev.kdePackages // {
+      plasma-workspace = let
+
+        # the package we want to override
+        basePkg = prev.kdePackages.plasma-workspace;
+
+        # a helper package that merges all the XDG_DATA_DIRS into a single directory
+        xdgdataPkg = pkgs.stdenv.mkDerivation {
+          name = "${basePkg.name}-xdgdata";
+          buildInputs = [ basePkg ];
+          dontUnpack = true;
+          dontFixup = true;
+          dontWrapQtApps = true;
+          installPhase = ''
+            mkdir -p $out/share
+            ( IFS=:
+              for DIR in $XDG_DATA_DIRS; do
+                if [[ -d "$DIR" ]]; then
+                  cp -r $DIR/. $out/share/
+                  chmod -R u+w $out/share
+                fi
+              done
+            )
+          '';
+        };
+
+        # undo the XDG_DATA_DIRS injection that is usually done in the qt wrapper
+        # script and instead inject the path of the above helper package
+        derivedPkg = basePkg.overrideAttrs {
+          preFixup = ''
+            for index in "''${!qtWrapperArgs[@]}"; do
+              if [[ ''${qtWrapperArgs[$((index+0))]} == "--prefix" ]] && [[ ''${qtWrapperArgs[$((index+1))]} == "XDG_DATA_DIRS" ]]; then
+                unset -v "qtWrapperArgs[$((index+0))]"
+                unset -v "qtWrapperArgs[$((index+1))]"
+                unset -v "qtWrapperArgs[$((index+2))]"
+                unset -v "qtWrapperArgs[$((index+3))]"
+              fi
+            done
+            qtWrapperArgs=("''${qtWrapperArgs[@]}")
+            qtWrapperArgs+=(--prefix XDG_DATA_DIRS : "${xdgdataPkg}/share")
+            qtWrapperArgs+=(--prefix XDG_DATA_DIRS : "$out/share")
+          '';
+        };
+
+      in derivedPkg;
+    };
+  });
   
   # Enable OpenGL
   hardware.graphics = {
@@ -292,7 +330,7 @@
     kdePackages.eventviews    # KDE PIM Event Views
     kdePackages.korganizer    # KDE Organizational Assistant
     inputs.zen-browser.packages."${system}".default # Zen Browser
-    # zeal                      # Offline documentation browser - idk why it's broken but it is
+    zeal                      # Offline documentation browser - idk why it's broken but it is
     kdePackages.kio-gdrive    # Google Drive integration for KDE
     audacity                  # Audio Editor
     jetbrains.idea-community-bin # JetBrains IntelliJ IDEA Community Edition

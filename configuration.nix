@@ -293,6 +293,7 @@
     jadx                      # Dex to Java decompiler
     unrar                     # RAR file extractor
     texlive.combined.scheme-medium
+    android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)
 
     # Wine stuff
     wineWowPackages.waylandFull
@@ -357,9 +358,6 @@
   # Allow installing of App Images
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
-
-  # Android Stuff
-  programs.adb.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

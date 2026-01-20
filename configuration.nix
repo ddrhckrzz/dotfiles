@@ -238,13 +238,15 @@
     git	                    	# Version Control
     snapshot			            # Screenshot lol
     direnv                    # Shell Extension that manages the environment
-    neofetch                  # Fetches system information and displays it in the terminal
+    fastfetch                 # Fast system information tool written in Rust
     htop                      # Interactive process viewer
     zoxide                    # Smart directory navigation tool
     alacritty                 # Alternative Terminal
     devenv                    # Development Environment for NixOS
     kdePackages.bluedevil     # KDE Bluetooth for Plasma 5
     kdePackages.bluez-qt      # Qt wrapper for Bluez 5 DBus API
+    caligula                  # User-friendly, lightweight TUI for disk imaging
+    killall                   # Kill processes by name
 
     # Dependencies in general
     pkgs.temurin-bin		    	# Temurin OpenJDK 21 LTS
@@ -297,7 +299,7 @@
     winetricks
 
     # Hacking stuff
-    # inputs.ctf-tools.packages."${system}".default # CTF Tools - disable for now since broken
+    # MOVED: Check Specific CTF Tools in the respective Coding Environment Folder
     exiftool
     p7zip
     binwalk
@@ -308,6 +310,9 @@
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
+
+    # School Stuff
+    pencil                    # GUI prototyping tool
     
     # Desktop Apps
     pkgs.vesktop 			        # Discord

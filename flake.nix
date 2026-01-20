@@ -12,12 +12,6 @@
       # to have it up-to-date or simply don't specify the nixpkgs input
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # CTF Tools - curreently broken on my end
-    # ctf-tools = {
-    #   url = "github:NixenBiksen/ctf-nix";
-    #   # inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = { self, nixpkgs, ... } @inputs: {

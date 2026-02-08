@@ -46,56 +46,56 @@
   # Enable KDE PIM (Plasma 6)
   programs.kde-pim.enable = true;
 
-  # MAKE KDE PLASMA FASTER!!!!!!!
+  # MAKE KDE PLASMA FASTER!!!!!!! /// let's disable this for now
 
-  nixpkgs.overlays = lib.singleton (final: prev: {
-    kdePackages = prev.kdePackages // {
-      plasma-workspace = let
+  # nixpkgs.overlays = lib.singleton (final: prev: {
+  #   kdePackages = prev.kdePackages // {
+  #     plasma-workspace = let
 
-        # the package we want to override
-        basePkg = prev.kdePackages.plasma-workspace;
+  #       # the package we want to override
+  #       basePkg = prev.kdePackages.plasma-workspace;
 
-        # a helper package that merges all the XDG_DATA_DIRS into a single directory
-        xdgdataPkg = pkgs.stdenv.mkDerivation {
-          name = "${basePkg.name}-xdgdata";
-          buildInputs = [ basePkg ];
-          dontUnpack = true;
-          dontFixup = true;
-          dontWrapQtApps = true;
-          installPhase = ''
-            mkdir -p $out/share
-            ( IFS=:
-              for DIR in $XDG_DATA_DIRS; do
-                if [[ -d "$DIR" ]]; then
-                  cp -r $DIR/. $out/share/
-                  chmod -R u+w $out/share
-                fi
-              done
-            )
-          '';
-        };
+  #       # a helper package that merges all the XDG_DATA_DIRS into a single directory
+  #       xdgdataPkg = pkgs.stdenv.mkDerivation {
+  #         name = "${basePkg.name}-xdgdata";
+  #         buildInputs = [ basePkg ];
+  #         dontUnpack = true;
+  #         dontFixup = true;
+  #         dontWrapQtApps = true;
+  #         installPhase = ''
+  #           mkdir -p $out/share
+  #           ( IFS=:
+  #             for DIR in $XDG_DATA_DIRS; do
+  #               if [[ -d "$DIR" ]]; then
+  #                 cp -r $DIR/. $out/share/
+  #                 chmod -R u+w $out/share
+  #               fi
+  #             done
+  #           )
+  #         '';
+  #       };
 
-        # undo the XDG_DATA_DIRS injection that is usually done in the qt wrapper
-        # script and instead inject the path of the above helper package
-        derivedPkg = basePkg.overrideAttrs {
-          preFixup = ''
-            for index in "''${!qtWrapperArgs[@]}"; do
-              if [[ ''${qtWrapperArgs[$((index+0))]} == "--prefix" ]] && [[ ''${qtWrapperArgs[$((index+1))]} == "XDG_DATA_DIRS" ]]; then
-                unset -v "qtWrapperArgs[$((index+0))]"
-                unset -v "qtWrapperArgs[$((index+1))]"
-                unset -v "qtWrapperArgs[$((index+2))]"
-                unset -v "qtWrapperArgs[$((index+3))]"
-              fi
-            done
-            qtWrapperArgs=("''${qtWrapperArgs[@]}")
-            qtWrapperArgs+=(--prefix XDG_DATA_DIRS : "${xdgdataPkg}/share")
-            qtWrapperArgs+=(--prefix XDG_DATA_DIRS : "$out/share")
-          '';
-        };
+  #       # undo the XDG_DATA_DIRS injection that is usually done in the qt wrapper
+  #       # script and instead inject the path of the above helper package
+  #       derivedPkg = basePkg.overrideAttrs {
+  #         preFixup = ''
+  #           for index in "''${!qtWrapperArgs[@]}"; do
+  #             if [[ ''${qtWrapperArgs[$((index+0))]} == "--prefix" ]] && [[ ''${qtWrapperArgs[$((index+1))]} == "XDG_DATA_DIRS" ]]; then
+  #               unset -v "qtWrapperArgs[$((index+0))]"
+  #               unset -v "qtWrapperArgs[$((index+1))]"
+  #               unset -v "qtWrapperArgs[$((index+2))]"
+  #               unset -v "qtWrapperArgs[$((index+3))]"
+  #             fi
+  #           done
+  #           qtWrapperArgs=("''${qtWrapperArgs[@]}")
+  #           qtWrapperArgs+=(--prefix XDG_DATA_DIRS : "${xdgdataPkg}/share")
+  #           qtWrapperArgs+=(--prefix XDG_DATA_DIRS : "$out/share")
+  #         '';
+  #       };
 
-      in derivedPkg;
-    };
-  });
+  #     in derivedPkg;
+  #   };
+  # });
   
   # Enable OpenGL
   hardware.graphics = {
@@ -213,6 +213,41 @@
     extraGroups = [ "networkmanager" "wheel" "kvd" "adbusers" ];
     packages = with pkgs; [
       thunderbird
+      gimp                      # Image Editor
+      audacity                  # Audio Editor
+
+      # School Stuff
+      pencil                    # GUI prototyping tool
+
+      # Office
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US
+
+      # Desktop Apps
+      pkgs.vesktop 			        # Discord
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
+      pkgs.gparted			        # Partition Manager
+      pkgs.prismlauncher		  	# Prism Launcher for Minecraft
+      hardinfo2                 # System information and benchmarks for Linux systems
+      haruna                    # Open source video player built with Qt/QML and libmpv
+      jetbrains.idea-oss        # JetBrains IntelliJ IDEA Community Edition
+      protonup-qt               # GUI Proton Updater
+      inputs.zen-browser.packages."${system}".default # Zen Browser
+      zeal                      # Offline documentation browser
+      wl-clipboard              # Command-line copy/paste utilities for Wayland
+      kdePackages.kcalc         # Calculator
+      kdePackages.kolourpaint   # Easy-to-use paint program
+      kdePackages.ksystemlog    # KDE SystemLog Application
+      kdePackages.sddm-kcm      # Configuration module for SDDM
+      kdiff3                    # Compares and merges 2 or 3 files or directories
+      kdePackages.kdepim-addons # KDE PIM Addons
+      kdePackages.eventviews    # KDE PIM Event Views
+      kdePackages.korganizer    # KDE Organizational Assistant
+      kdePackages.kio-gdrive    # Google Drive integration for KDE
     ];
   };
 
@@ -254,40 +289,7 @@
     pkgs.temurin-jre-bin-17		# Temurin JRE 17
     zulu25                    # Azul Zulu OpenJDK 25
     maven                     # Apache Maven for Java projects
-    nss_latest                # Latest NSS (Network Security Services) for Firefox
-    (pkgs.rWrapper.override{ 
-      packages = with pkgs.rPackages; [ # R with R packages
-        rmarkdown
-        rlang
-        ggplot2
-        downloader
-        dplyr
-        tidyr
-        xts
-      ];
-    })
-    (pkgs.rstudioWrapper.override{ 
-      packages = with pkgs.rPackages; [ # RStudio with R packages
-        rmarkdown
-        knitr
-        rlang
-        dplyr
-        ggplot2
-        tidyr
-        readr
-        stringr
-        forcats
-        xts
-        shiny
-        learnr
-        rstudioapi
-        downloader
-      ];
-    })
     pandoc                    # Universal document converter
-    pkgs.mars-mips            # MARS IDE for MIPS assembly language
-    nasm                      # Netwide Assembler for x86 architecture
-    fontconfig                # Font configuration and customization library
     android-studio            # Android Studio for Android Development
     postman                   # Postman
     jadx                      # Dex to Java decompiler
@@ -307,40 +309,8 @@
     sleuthkit
     steghide
 
-    # Office
-    libreoffice-qt
-    hunspell
-    hunspellDicts.en_US
-
-    # School Stuff
-    pencil                    # GUI prototyping tool
-    
-    # Desktop Apps
-    pkgs.vesktop 			        # Discord
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
-    pkgs.gparted			        # Partition Manager
-    pkgs.prismlauncher		  	# Prism Launcher for Minecraft
-    hardinfo2                 # System information and benchmarks for Linux systems
-    haruna                    # Open source video player built with Qt/QML and libmpv
+    #other stuff
     wayland-utils             # Wayland utilities
-    wl-clipboard              # Command-line copy/paste utilities for Wayland
-    kdePackages.kcalc         # Calculator
-    kdePackages.kolourpaint   # Easy-to-use paint program
-    kdePackages.ksystemlog    # KDE SystemLog Application
-    kdePackages.sddm-kcm      # Configuration module for SDDM
-    kdiff3                    # Compares and merges 2 or 3 files or directories
-    kdePackages.kdepim-addons # KDE PIM Addons
-    kdePackages.eventviews    # KDE PIM Event Views
-    kdePackages.korganizer    # KDE Organizational Assistant
-    inputs.zen-browser.packages."${system}".default # Zen Browser
-    zeal                      # Offline documentation browser - idk why it's broken but it is
-    kdePackages.kio-gdrive    # Google Drive integration for KDE
-    audacity                  # Audio Editor
-    jetbrains.idea-community-bin # JetBrains IntelliJ IDEA Community Edition
-    protonup-qt               # GUI Proton Updater
   ];
   
   # Enable and Configure Steam

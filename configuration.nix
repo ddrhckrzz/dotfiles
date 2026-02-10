@@ -236,7 +236,7 @@
       haruna                    # Open source video player built with Qt/QML and libmpv
       jetbrains.idea-oss        # JetBrains IntelliJ IDEA Community Edition
       protonup-qt               # GUI Proton Updater
-      inputs.zen-browser.packages."${system}".default # Zen Browser
+      inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default # Zen Browser
       zeal                      # Offline documentation browser
       wl-clipboard              # Command-line copy/paste utilities for Wayland
       kdePackages.kcalc         # Calculator

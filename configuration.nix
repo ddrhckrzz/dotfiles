@@ -223,6 +223,7 @@
       libreoffice-qt-fresh
       hunspell
       hunspellDicts.en_US
+      wpsoffice                 # WPS Office Suite
 
       # Desktop Apps
       pkgs.vesktop 			        # Discord
@@ -248,7 +249,6 @@
       kdePackages.eventviews    # KDE PIM Event Views
       kdePackages.korganizer    # KDE Organizational Assistant
       kdePackages.kio-gdrive    # Google Drive integration for KDE
-      inputs.wpsoffice-flake.packages."${stdenv.hostPlatform.system}".default # WPS Office Bundle
     ];
   };
 

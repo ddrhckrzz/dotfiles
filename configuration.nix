@@ -248,12 +248,14 @@
       kdePackages.eventviews    # KDE PIM Event Views
       kdePackages.korganizer    # KDE Organizational Assistant
       kdePackages.kio-gdrive    # Google Drive integration for KDE
+      inputs.wpsoffice-flake.packages."${stdenv.hostPlatform.system}".default # WPS Office Bundle
     ];
   };
 
   fonts.packages = with pkgs; [
     monocraft
     dejavu_fonts
+    inputs.wpsoffice-flake.packages.x86_64-linux.fonts # WPS Office Fonts
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   fonts.fontDir.enable = true;
@@ -294,9 +296,7 @@
     postman                   # Postman
     jadx                      # Dex to Java decompiler
     unrar                     # RAR file extractor
-    (texlive.combine {
-      inherit (texlive) scheme-medium todonotes;
-    })
+    texlive.combine.scheme-full # Full TeX Live distribution for LaTeX support
     android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)
 
     # Wine stuff

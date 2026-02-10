@@ -12,6 +12,12 @@
       # to have it up-to-date or simply don't specify the nixpkgs input
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # WPS Office Bundle
+    wpsoffice-flake = {
+      url = "github:alex-karev/wpsoffice-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... } @inputs: {

@@ -220,7 +220,7 @@
       pencil                    # GUI prototyping tool
 
       # Office
-      libreoffice-qt
+      libreoffice-qt-fresh
       hunspell
       hunspellDicts.en_US
 
@@ -294,7 +294,9 @@
     postman                   # Postman
     jadx                      # Dex to Java decompiler
     unrar                     # RAR file extractor
-    texlive.combined.scheme-medium
+    (texlive.combine {
+      inherit (texlive) scheme-medium todonotes;
+    })
     android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)
 
     # Wine stuff
@@ -374,10 +376,6 @@
   
   # Enable Nix Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Automatically upgrade NixOS
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
 
   # List services that you want to enable:
 

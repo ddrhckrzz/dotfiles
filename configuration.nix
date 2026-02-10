@@ -296,7 +296,7 @@
     postman                   # Postman
     jadx                      # Dex to Java decompiler
     unrar                     # RAR file extractor
-    texlive.combine.scheme-full # Full TeX Live distribution for LaTeX support
+    texlive.combined.scheme-full # Full TeX Live distribution for LaTeX support
     android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)
 
     # Wine stuff

@@ -40,7 +40,28 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
+        "wpsoffice-flake": "wpsoffice-flake",
         "zen-browser": "zen-browser"
+      }
+    },
+    "wpsoffice-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763010066,
+        "narHash": "sha256-6CHqEYyIBm+NK+pyCWDk04To2ZuX4TFH1tSwL+FbUMc=",
+        "owner": "alex-karev",
+        "repo": "wpsoffice-flake",
+        "rev": "ebd64051f3ac2f7ca82111af300e3e01531e15c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alex-karev",
+        "repo": "wpsoffice-flake",
+        "type": "github"
       }
     },
     "zen-browser": {

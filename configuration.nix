@@ -224,6 +224,7 @@
       hunspell
       hunspellDicts.en_US
       wpsoffice                 # WPS Office Suite
+      tex-fmt                   # TeX Formatter written in Rust
 
       # Desktop Apps
       pkgs.vesktop 			        # Discord

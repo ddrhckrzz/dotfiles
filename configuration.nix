@@ -14,6 +14,32 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  #################################### BOOT SETTINGS ####################################
+  boot = {
+    # Enable the Linux kernel.
+    kernelPackages = pkgs.linuxPackages_6_18;
+
+    # More Kernel Modules
+    extraModulePackages = with pkgs; [
+      v4l2loopback
+    ];
+
+    # Activate kernel modules
+    kernelModules = [
+      # Virtual Camera
+      "v4l2loopback"
+      # Virtual Microphone, built-in
+      "snd-aloop"
+    ];
+
+    boot.extraModprobeConfig = ''
+      # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
+      # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
+      # https://github.com/umlaeute/v4l2loopback
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+    '';
+  }
+
   networking.hostName = "ddrhckrzz-nixos" ; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

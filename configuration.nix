@@ -20,7 +20,7 @@
     kernelPackages = pkgs.linuxPackages_6_18;
 
     # More Kernel Modules
-    extraModulePackages = with pkgs; [
+    extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
 

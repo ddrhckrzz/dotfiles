@@ -254,7 +254,10 @@
   };
 
   fonts.packages = with pkgs; [
-    monocraft
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    fira-code-symbols
+    miracode
     dejavu_fonts
     inputs.wpsoffice-flake.packages.x86_64-linux.fonts # WPS Office Fonts
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);

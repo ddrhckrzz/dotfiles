@@ -250,6 +250,15 @@
       kdePackages.eventviews    # KDE PIM Event Views
       kdePackages.korganizer    # KDE Organizational Assistant
       kdePackages.kio-gdrive    # Google Drive integration for KDE
+      droidcam                  # Use your Android device as a webcam
+      (pkgs.wrapOBS {
+          plugins = with pkgs.obs-studio-plugins; [
+            droidcam-obs
+            wlrobs
+            obs-backgroundremoval
+            obs-pipewire-audio-capture
+          ];
+      })
     ];
   };
 

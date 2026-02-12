@@ -285,6 +285,7 @@
             obs-pipewire-audio-capture
           ];
       })
+      spotify                   # Spotify
     ];
   };
 
@@ -352,6 +353,7 @@
 
     #other stuff
     wayland-utils             # Wayland utilities
+    imagemagick
   ];
   
   # Enable and Configure Steam

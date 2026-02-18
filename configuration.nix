@@ -341,7 +341,7 @@
     android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)
 
     # Wine stuff
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     winetricks
 
     # Hacking stuff

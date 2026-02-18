@@ -258,6 +258,7 @@
         withOpenASAR = true;
         withVencord = true;
       })
+      element-desktop           # Matrix Desktop client
       pkgs.gparted			        # Partition Manager
       pkgs.prismlauncher		  	# Prism Launcher for Minecraft
       hardinfo2                 # System information and benchmarks for Linux systems

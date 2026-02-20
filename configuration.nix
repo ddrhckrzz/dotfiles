@@ -251,6 +251,7 @@
       hunspellDicts.en_US
       wpsoffice                 # WPS Office Suite
       tex-fmt                   # TeX Formatter written in Rust
+      zotero                    # Research Assistance / Reference Management Software
 
       # Desktop Apps
       pkgs.vesktop 			        # Discord
@@ -356,6 +357,13 @@
     wayland-utils             # Wayland utilities
     imagemagick
   ];
+
+  environment.shellAliases = {
+    java8 = "${pkgs.temurin-jre-bin-8}/bin/java";
+    java17 = "${pkgs.temurin-jre-bin-17}/bin/java";
+    java21 = "${pkgs.temurin-bin}/bin/java";
+    java25 = "${pkgs.zulu25}/bin/java";
+  };
   
   # Enable and Configure Steam
   programs.steam = {

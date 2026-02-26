@@ -340,6 +340,7 @@
     unrar                     # RAR file extractor
     texlive.combined.scheme-full # Full TeX Live distribution for LaTeX support
     android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)
+    nixd
 
     # Wine stuff
     wineWow64Packages.waylandFull

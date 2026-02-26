@@ -260,8 +260,7 @@
         withVencord = true;
       })
       element-desktop           # Matrix Desktop client
-      pkgs.gparted			        # Partition Manager
-      pkgs.prismlauncher		  	# Prism Launcher for Minecraft
+      prismlauncher		  	      # Prism Launcher for Minecraft
       hardinfo2                 # System information and benchmarks for Linux systems
       haruna                    # Open source video player built with Qt/QML and libmpv
       jetbrains.idea-oss        # JetBrains IntelliJ IDEA Community Edition
@@ -340,7 +339,8 @@
     unrar                     # RAR file extractor
     texlive.combined.scheme-full # Full TeX Live distribution for LaTeX support
     android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)
-    nixd
+    nixd                      # Nix Language Server
+    nixfmt                    # Nix code formatter 
 
     # Wine stuff
     wineWow64Packages.waylandFull
@@ -357,6 +357,7 @@
     #other stuff
     wayland-utils             # Wayland utilities
     imagemagick
+    gparted			              # Partition Manager
   ];
 
   environment.shellAliases = {

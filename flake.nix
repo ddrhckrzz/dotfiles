@@ -4,6 +4,7 @@
   inputs = {
     # System packages
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
 
     # Zen Browser
     zen-browser = {
@@ -20,7 +21,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... } @inputs: {
+  outputs = { self, nixpkgs, nixpkgs-stable, ... } @inputs: {
     nixosConfigurations.ddrhckrzz-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };

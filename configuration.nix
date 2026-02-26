@@ -4,6 +4,12 @@
 
 { config, pkgs, lib, inputs, ... }:
 
+let
+  pkgs-stable = import inputs.nixpkgs-stable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -335,7 +341,7 @@
     pandoc                    # Universal document converter
     android-studio            # Android Studio for Android Development
     postman                   # Postman
-    # jadx                      # Dex to Java decompiler (currently broken)
+    pkgs-stable.jadx          # Dex to Java decompiler
     unrar                     # RAR file extractor
     texlive.combined.scheme-full # Full TeX Live distribution for LaTeX support
     android-tools             # Android SDK Platform Tools (adb, fastboot, etc.)

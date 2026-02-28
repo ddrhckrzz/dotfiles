@@ -293,8 +293,6 @@ in
           ];
       })
       spotify                   # Spotify
-      qtscrcpy
-      scrcpy                     # Android screen mirroring and control
     ];
   };
 
@@ -366,6 +364,8 @@ in
     wayland-utils             # Wayland utilities
     imagemagick
     gparted			              # Partition Manager
+    qtscrcpy
+    scrcpy                     # Android screen mirroring and control
   ];
 
   environment.shellAliases = {

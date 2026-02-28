@@ -293,6 +293,8 @@ in
           ];
       })
       spotify                   # Spotify
+      qtscrcpy
+      scrcpy                     # Android screen mirroring and control
     ];
   };
 
@@ -434,6 +436,9 @@ in
   
   # Enable Nix Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  # Trusted users for nix commands.
+  nix.settings.trusted-users = [ "root" "ddrhckrzz" ];
 
   # List services that you want to enable:
 
